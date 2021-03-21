@@ -1,0 +1,42 @@
+﻿
+@model IEnumerable<TruYum.Controllers.CustomerController.CartList>
+
+
+@{ ViewBag.Title = "ViewCart"; }
+
+<h2>ViewCart</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Name")
+        </th>
+        <th>
+            @Html.DisplayName("FreeDelivery")
+        </th>
+        <th>
+            @Html.DisplayName("Price")
+        </th>
+
+        <th>@Html.DisplayName("Action")</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FreeDelivery)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Price)
+    </td>
+    <td>
+        @Html.ActionLink("Remove", "Delete", new { id = item.CartId },null)
+    </td>
+</tr>
+}
+
+</table>
+@Html.ActionLink("View Menu Item", "CustomerIndex","MenuItems")
